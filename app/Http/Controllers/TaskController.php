@@ -12,6 +12,13 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    // Authentication check on route
+    public function __construct(){
+      $this->middleware('auth');
+    }
+
     public function index()
     {
         // die(__METHOD__);

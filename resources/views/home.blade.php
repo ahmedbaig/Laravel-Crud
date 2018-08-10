@@ -1,22 +1,33 @@
+
+
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+<div class="flex-center position-ref full-height">
+    <div class="content">
+        <div class="title">
+              Dashboard
+        </div>
+        <div class="panel-body">
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
                 </div>
-            </div>
+            @endif
+            <h2>
+              Hi ! {{ Auth::user()->name}}
+            </h2>
+        </div>
+        <div class="links">
+          @if (Route::has('login'))
+              <div class="links">
+                  @auth
+                  @else
+                      <a href="{{ route('login') }}">Login</a>
+                      <a href="{{ route('register') }}">Register</a>
+                  @endauth
+              </div>
+          @endif
         </div>
     </div>
 </div>
